@@ -32,6 +32,7 @@ const ExpandMore = styled((props) => {
 export default function DetailComponent() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const [data, setData] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
   const { id } = useParams();
@@ -45,8 +46,9 @@ export default function DetailComponent() {
 
   useEffect(() => {
     getBooks();
-  }, []);
+  }, [refresh]);
 
+  
   const getBooks = () => {
     setLoading(true);
     axios
